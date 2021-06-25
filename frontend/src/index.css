@@ -1,0 +1,16 @@
+main {
+  min-height: 80vh;
+}
+#fas-shopping-cart{
+  padding-right: 5px;
+}
+#fas-user{
+  padding-right: 5px;
+}
+
+.rating span{
+  margin: 0.1rem;
+}
+
+h3{
+  padding: 1rem 0;}
