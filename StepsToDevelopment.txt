@@ -1,0 +1,24 @@
+MCV - Model View Controller 
+Model - Connect to DB and get the data 
+View - The front end 
+Controller - The connection between Models and Views, (application logic = visiting routes we get different data)
+
+1 - Create Components
+    1.1 - folder components (header, footer, products)
+    1.2 - folder screens (home screen, product screen)
+    1.3 - implement react router (link to...)
+2 - Create Server
+    2.1 - folder config (config database)
+    2.2 - file env 
+    2.3 folder routes (router with routes)
+    2.3.1 folder controllers (the return we want when we visit a specific route )
+    2.4 folder handleErrors (handle errors)
+    2.5 folder DBModels (DB schema and create models)
+3 - Fetching Data from DB
+    3.1 - implement axios in screens with requests to backend (need to config proxy in frontend to the backend) -----> substituido por redux 
+    3.2  config App to show the screen accordantly with react-router-dom 
+4 - Implement Redux (States and Actions Components)
+    4.1 - create store.js (basically it grabs all the reducers and get the actual data -> its the "store" where we get stuff and then manipulate it, in this context, our data from DB)
+    4.2 - folder actions (implement axios with redux, basically it will allows us dispatch the actions that we want accordantly and define the payload we want in each action) 
+    4.3 - folder reducers (switch with all the actions and the outcome -> return state and payload)
+    

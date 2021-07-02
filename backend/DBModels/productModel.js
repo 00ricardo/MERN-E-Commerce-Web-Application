@@ -16,16 +16,20 @@ const productSchema = moongose.Schema({
     name: {
         type: String,
         required: true
-    }, image: {
+    },
+    image: {
         type: String,
         required: true
-    }, brand: {
+    },
+    brand: {
         type: String,
         required: true
-    }, category: {
+    },
+    category: {
         type: String,
         required: true
-    }, description: {
+    },
+    description: {
         type: String,
         required: true
     },
@@ -34,15 +38,18 @@ const productSchema = moongose.Schema({
         type: Number,
         required: true,
         default: 0
-    }, numReviews: {
+    },
+    numReviews: {
         type: Number,
         required: true,
         default: 0
-    }, price: {
+    },
+    price: {
         type: Number,
         required: true,
         default: 0
-    }, countInStock: {
+    },
+    countInStock: {
         type: Number,
         required: true,
         default: 0

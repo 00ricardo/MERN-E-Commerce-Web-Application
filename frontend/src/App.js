@@ -5,6 +5,9 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import HomeScreen from './screens/HomeScreen'
 import ProductScreen from './screens/ProductScreen'
+import CartScreen from './screens/CartScreen'
+
+//in cart/:id? -> the question mark means that the id its a optional param
 const App = () => {
   return (
     <Router>
@@ -13,6 +16,7 @@ const App = () => {
         <Container>
           <Route path='/' component={HomeScreen} exact></Route>
           <Route path='/product/:id' component={ProductScreen} ></Route>
+          <Route path='/cart/:id?' component={CartScreen} ></Route>
         </Container>
       </main>
       <Footer></Footer>

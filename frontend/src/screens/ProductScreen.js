@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
-import { Container, Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap'
+import React, { useState, useEffect } from 'react'
+import { Container, Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import Rating from '../components/Rating'
 import { listProductDetails } from '../actions/productAction.js'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ history, match }) => {
+    const [quantity, setQuantity] = useState(1) //quantity = 0 by default --> useState is used to update a value (quantity) with a function (setQuantity)
+
+
     const dispatch = useDispatch()
 
     const productDetails = useSelector(state =>   //getting the state of product details
@@ -17,6 +20,11 @@ const ProductScreen = ({ match }) => {
     useEffect(() => {   // useEffect executa imediamente quando o componente é chamado
         dispatch(listProductDetails(match.params.id))  //dispatch action
     }, [dispatch, match])
+
+
+    const addToCart = () => {
+        history.push(`/cart/${match.params.id}?quantity=${quantity}`)  // redirect to a specific route (/cart/:id)
+    }
 
     return (
         <>
@@ -71,9 +79,29 @@ const ProductScreen = ({ match }) => {
                                                 </Col>
                                             </Row>
                                         </ListGroupItem>
+
+                                        {product.countInStock > 0 && /* here, i just wanna display the "quantity" wether there is stock (>0) */(
+                                            <ListGroupItem>
+                                                <Row>
+                                                    <Col>
+                                                        Quantity
+                                                    </Col>
+                                                    <Col>
+                                                        <Form.Control as='select' value={quantity} onChange={(e) => setQuantity(e.target.value)}>
+                                                            {[...Array(product.countInStock).keys()].map((x) => ( //I'm getting all index array (for example 0 to 9, considering that may have 10 products in stock)
+                                                                <option key={x + 1} value={x + 1} /* then... im getting the real value (index + 1) and set it as value*/>
+                                                                    {x + 1}
+                                                                </option>
+                                                            ))}
+                                                        </Form.Control>
+
+                                                    </Col>
+                                                </Row>
+                                            </ListGroupItem>)}
+
                                         <ListGroupItem>
                                             <Row>
-                                                <Button className='btn-block' type='button' disabled={product.countInStock === 0}>Add to Cart</Button>
+                                                <Button onClick={addToCart} className='btn-block' type='button' disabled={product.countInStock === 0}>Add to Cart</Button>
                                             </Row>
                                         </ListGroupItem>
                                     </ListGroup>
