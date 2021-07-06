@@ -1,12 +1,12 @@
 import moongose from 'mongoose'
-const orderSchema = moongose.Schema({
+const orderSchema = moongose.Schema({   //we are creating the schema -> skeleton of our collection 
     user: {
-        type: moongose.Schema.Types.ObjectId,
+        type: moongose.Schema.Types.ObjectId,       //the order has associated an user (user id)
         required: true,
-        ref: 'User'
+        ref: 'User'                                 //reference to the User Collection
     }, orderItems: [
         {
-            name: {
+            name: {                     //product name
                 type: String,
                 required: true,
             },
@@ -23,9 +23,9 @@ const orderSchema = moongose.Schema({
                 required: true,
             },
             product: {
-                type: moongose.Schema.Types.ObjectId,
+                type: moongose.Schema.Types.ObjectId,   //the order has associated a list of products (product id)
                 required: true,
-                ref: 'Product'
+                ref: 'Product'                  //reference to the Product Collection
             }
         }
     ],
@@ -93,6 +93,6 @@ const orderSchema = moongose.Schema({
 })
 
 
-const Order = moongose.model('Order', orderSchema)
+const Order = moongose.model('Order', orderSchema)      //create an Model Order with the schema
 
 export default Order

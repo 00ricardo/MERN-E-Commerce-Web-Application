@@ -3,7 +3,7 @@ const users = [
     {
         name: 'Admin User',
         email: 'adming@example.com',
-        password: bcrypt.hashSync('123456', 10),
+        password: bcrypt.hashSync('123456', 10),    //encrypting password with Synchronously Hash , lenght = 10 (not strong enough) -> should be at least 24
         isAdmin: true
     },
     {

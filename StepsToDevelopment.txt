@@ -3,6 +3,15 @@ Model - Connect to DB and get the data
 View - The front end 
 Controller - The connection between Models and Views, (application logic = visiting routes we get different data)
 
+
+
+0 - Create Enviroment
+    0.1 - npx create-react-app frontend 
+    0.2 - clean default react configuration
+    0.3 - move gitignore from frontend to global
+    0.4 - in gitignore update node_modules and add node_modules/
+    0.5 - in gitignore add .env 
+    0.6 - in package.json add the scripts to run server and react (concurrently)
 1 - Create Components
     1.1 - folder components (header, footer, products)
     1.2 - folder screens (home screen, product screen)

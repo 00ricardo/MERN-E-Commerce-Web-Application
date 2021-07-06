@@ -1,7 +1,7 @@
 import moongose from 'mongoose'
 const connectDB = async () => {
     try {
-        const conn = await moongose.connect(process.env.MONGO_URI, {
+        const conn = await moongose.connect(process.env.MONGO_URI, {    //connect to database using the connection URI
             useUnifiedTopology: true,
             useNewUrlParser: true,
             useCreateIndex: true
