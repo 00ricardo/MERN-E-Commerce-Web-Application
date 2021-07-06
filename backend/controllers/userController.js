@@ -41,7 +41,41 @@ const getUserProfile = expressAsyncHandler(async (req, res) => {
     }
 })
 
+// @description Register a new user
+// @route POST /api/users
+// @acess Public
+
+const registerUser = expressAsyncHandler(async (req, res) => {
+    const { name, email, password } = req.body
+    const userExists = await User.findOne({ email: email })
+    if (userExists) {
+        res.status(400)
+        throw new Error('User already registered.')
+    }
+    const user = await User.create({
+        name: name,
+        email: email,
+        password: password,
+        isAdmin: false
+    })
+    if (user) {
+        res.status(201).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
+            token: generateToken(user._id)
+        })
+    } else {
+        res.status(400)
+        throw new Error('User not found')
+    }
+})
+
+
+
 export {
     authUser,
-    getUserProfile
+    getUserProfile,
+    registerUser
 }
